@@ -1,0 +1,26 @@
+<div id="<%= dom_id friend %>">
+
+<div class="card text-center">
+  <div class="card-header">
+    <%= friend.nickname %>
+  </div>
+  <div class="card-body">
+    <h2>
+      <strong>
+      <%= friend.first_name %>
+      <%= friend.last_name %>
+    </strong>
+    </h2>
+    <p class="card-text">
+      <%= friend.phone %> |
+      <%= friend.email %>
+    </p>
+    <%= link_to "Edit this friend", edit_friend_path(friend), class: "btn btn-success" %>
+  </div>
+  <div class="card-footer text-muted">
+   <strong>Instagram:</strong>
+    <%= friend.instagram %>
+  </div>
+</div>
+<br>
+</div>
