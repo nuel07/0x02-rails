@@ -7,6 +7,6 @@ The application also includes an authentication mechanism powered by the devise
 gem, enabling users to create and log into their accounts before performing any actions.
 
 ### Running the application
-This application is built with ruby on rails
+This application is built with ruby on rails.
 You need to have ruby and ruby on rails installed to run the application
 
