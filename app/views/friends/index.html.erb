@@ -1,31 +1,38 @@
-<h1>Friends</h1>
-
+<% if user_signed_in? %>
+  <h1>My Friends</h1>
 <table class="table table-striped table-bordered table-hover">
   <thead class="table-dark">
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>Name</th>
       <th>Nickmame</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Instagram</th>
-      <th colspan="3"></th>
+      <th>User ID</th>
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @friends.each do |friend| %>
+    <% if friend.user == current_user %>
       <tr>
-        <td><%= friend.first_name %></td>
-        <td><%= friend.last_name %></td>
+        <td><%= link_to friend.first_name + ' ' + friend.last_name, friend, class: "text-decoration-none"  %></td>
         <td><%= friend.nickname %></td>
         <td><%= friend.email %></td>
         <td><%= friend.phone %></td>
         <td><%= friend.instagram %></td>
-        <td><%= link_to 'Show', friend %></td>
-        <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
+        <td><%= friend.user_id %></td>
+        <td><%= link_to 'Edit', edit_friend_path(friend), class: "btn btn-sm btn-outline-success" %></td>
+      </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
 <br/>
 <%= link_to "New friend", new_friend_path, class: "btn btn-primary" %>
+
+<% else %>
+  <h1>Welcome to Friends</h1>
+  <h5><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Login", new_user_session_path %> to start creating a friends list</h5>
+<% end %>
